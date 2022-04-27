@@ -1,7 +1,7 @@
 - 👋 Hi, I’m Lemur  
-- 👀 I'm studying to become a pen-tester
-- 🌱 Planning to learn Py, YAML, maybe js
-- 💞️ I don't know what I'm doing, I'm just here to upload keys...  
+- 👀 I'm studying pen-testing/infosec
+- 🌱 Planning to learn Py, maybe js. Linux automation, from scratch
+- 💞️ I don't know what I'm doing, I'm just here to upload keys and notes...  
 - 🏳️‍🌈 1emvr@protonmail.com
 
 <!---
