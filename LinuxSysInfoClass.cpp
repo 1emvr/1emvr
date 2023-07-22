@@ -35,12 +35,13 @@ void banner(void) {
 
 class SystemInformation 
 {
+	// No real use for a class. Just wanted to be fancy.
 	public:
 		long unsigned int Architecture;
 		const char* MemoryInfoFile;
 		const char* KernelInfoFile;
 		const char* CpuInfoFile;
-		
+
 		// Constructor & Destructor
 		SystemInformation(long unsigned int architecture, const char* meminfo_file, const char* cpuinfo_file, const char* kerninfo_file) 
 		{
@@ -54,16 +55,16 @@ class SystemInformation
 		void GetMemoryInfo() 
 		{
 			double factor = 1024 * 1024;
-			
+
 			std::uint64_t value;
 			std::string line, label;
-	
+
 			auto ifs = std::ifstream{MemoryInfoFile};
 			while (std::getline(ifs, line)) 
 			{
 				std::stringstream StringStream{line};
 				StringStream >> label >> value;
-	
+
 				if (label == "MemTotal:") { std::cout << "\t[+] Total Memory (GB) " << (value / factor) << "\n"; }
 				if (label == "MemAvailable") { std::cout << "\t[+] Memory Available (GB) " << (value / factor) << "\n"; }
 			}
@@ -72,7 +73,7 @@ class SystemInformation
 		void GetCpuInfo() 
 		{
 			if (Architecture == 8) { printf("\t[+] 64-bit architecture detected.\n\n"); }
-				else { printf("\t[+] 32-bit architecture detected.\n\n"); }
+			else { printf("\t[+] 32-bit architecture detected.\n\n"); }
 
 			std::string line, label;
 			std::cout << "[+] System Information:" << "\n";
@@ -93,26 +94,26 @@ class SystemInformation
 
 void GetRuntimeInfo() {
 	/* 
-		This function does not actually utilize the class structure and is just a general function.
-		I'm leaving it here because it's simply not a part of SystemInfo class and just uses standard linux struct.b
-	
-		Credit for this one goes to caiorss - https://gist.github.com/caiorss
-	*/
-        struct sysinfo info;
-        sysinfo(&info);
-   		
-   		double factor = 1024 * 1024 * 1024;
-        std::uint64_t day_to_hours = 24 * 60;
+	   This function does not actually utilize the class structure and is just a general function.
+	   I'm leaving it here because it's simply not a part of SystemInfo class and just uses standard linux struct.b
 
-        std::cout << "Runtime Information:\n";
-        std::cout << " [*] System uptime since boot (minutes) = " << info.uptime << '\n'
-   				  << " [*] System uptime since boot   (hours) = " << info.uptime    / day_to_hours << '\n'
-  	  			  << " [*] Total RAM memory (Gb)              = " << info.totalram  / factor << '\n'
-	  			  << " [*] Free  RAM memory (Gb)              = " << info.freeram   / factor << '\n'
-	  			  << " [*] Total SWAP (Gb)                    = " << info.totalswap / factor << '\n'				  
-	  			  << " [*] Free SWAP (Gb)                     = " << info.freeswap  / factor << '\n'				  				  
-	  			  << " [*] Number of processes running        = " << info.procs << '\n'
-	  			  << '\n';
+	   Credit for this one goes to caiorss - https://gist.github.com/caiorss
+	   */
+	struct sysinfo info;
+	sysinfo(&info);
+
+	double factor = 1024 * 1024 * 1024;
+	std::uint64_t day_to_hours = 24 * 60;
+
+	std::cout << "Runtime Information:\n";
+	std::cout << " [*] System uptime since boot (minutes) = " << info.uptime << '\n'
+		<< " [*] System uptime since boot   (hours) = " << info.uptime    / day_to_hours << '\n'
+		<< " [*] Total RAM memory (Gb)              = " << info.totalram  / factor << '\n'
+		<< " [*] Free  RAM memory (Gb)              = " << info.freeram   / factor << '\n'
+		<< " [*] Total SWAP (Gb)                    = " << info.totalswap / factor << '\n'				  
+		<< " [*] Free SWAP (Gb)                     = " << info.freeswap  / factor << '\n'				  				  
+		<< " [*] Number of processes running        = " << info.procs << '\n'
+		<< '\n';
 }
 
 int main(void) {
