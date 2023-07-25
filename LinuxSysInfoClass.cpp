@@ -36,6 +36,7 @@ void banner(void) {
 class SystemInformation 
 {
 	// No real use for a class. Just wanted to be fancy.
+	// Kinda pointless, but fun to write.
 	public:
 		long unsigned int Architecture;
 		const char* MemoryInfoFile;
