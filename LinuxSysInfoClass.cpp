@@ -132,7 +132,6 @@ int main(void) {
 	system("ip addr show enp0s8 | egrep 'inet '");
 
 	puts("\nTry to execute /bin/sh\n");
-	bof_function();
 
 	return 0;
 }
